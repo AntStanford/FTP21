@@ -1,0 +1,361 @@
+<cfif cgi.script_name is not '/admin/login.cfm' AND NOT checkLoggedInUserSecurity()>
+    <cflocation addToken="no" url="/admin/login.cfm?logout">
+</cfif>
+
+<cfset adminPath = #ExpandPath('/admin')#>
+<!--- These are always installed by default --->
+<cfset numContacts = getCount('cms_contacts')>
+<cfquery name="getNumUsers" dataSource="#dsn#">
+   select count(id) as numUsers from cms_users where `role` != 'icnd'
+</cfquery>
+<cfquery name="numPages" dataSource="#dsn#">
+   select count(id) as numPages from cms_pages where showInAdmin = 'Yes'
+</cfquery><!doctype html>
+<html lang="en">
+<head>
+  <cfoutput>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <cfif isdefined('page.title')>
+    <title><cfoutput>#page.title#</cfoutput></title>
+  </cfif>
+  <link href="//#cgi.server_name#/admin/bootstrap/css/unicorn-app.css" rel="stylesheet">
+  <link href="//#cgi.server_name#/admin/bootstrap/css/custom.css" rel="stylesheet">
+  <link href="//#cgi.server_name#/admin/bootstrap/css/datepicker.css" rel="stylesheet">
+  <link href="//#cgi.server_name#/admin/bootstrap/css/bootstrap2-toggle.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abel" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-migrate/1.4.1/jquery-migrate.min.js" type="text/javascript"></script>
+  <script src="//#cgi.server_name#/admin/tinymce/tinymce.min.js" type="text/javascript"></script>
+  </cfoutput>
+  <script type="text/javascript">
+  tinymce.init({
+    selector: "textarea:not(.mceNoEditor)",
+    browser_spellcheck: true,
+    <cfif cgi.script_name contains "/admin/pages/">
+      plugins: [
+        "filemanager advlist autolink autosave link image lists charmap preview hr anchor pagebreak spellchecker",
+        "searchreplace wordcount code fullscreen insertdatetime nonbreaking",
+        "table contextmenu directionality template textcolor paste textcolor colorpicker textpattern"
+        ],
+      font_formats: "Andale Mono=andale mono,times;Arial=arial,helvetica,sans-serif;Arial Black=arial black,avant garde;Book Antiqua=book antiqua,palatino;Comic Sans MS=comic sans ms,sans-serif;Courier New=courier new,courier;Georgia=georgia,palatino;Helvetica=helvetica;Impact=impact,chicago;Open Sans=open sans;Symbol=symbol;Tahoma=tahoma,arial,helvetica,sans-serif;Terminal=terminal,monaco;Times New Roman=times new roman,times;Trebuchet MS=trebuchet ms,geneva;Verdana=verdana,geneva;Webdings=webdings;Wingdings=wingdings,zapf dingbats",
+        toolbar1: "filemanager undo redo | styleselect | fontselect fontsizeselect | bold italic underline strikethrough | alignleft aligncenter alignright alignjustify",
+        toolbar2: "cut copy paste | searchreplace | bullist numlist | outdent indent  link unlink anchor image code | preview | forecolor",
+        toolbar3: "table | hr removeformat | fullscreen | nonbreaking template pagebreak",
+        menubar: false,
+    <cfelse>
+      menubar: false,
+      toolbar: "filemanager undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | table | code",
+      plugins: "filemanager link table code image",
+    </cfif>
+    height: 300,
+    width: '81%',
+    content_css : '/stylesheets/styles.css',
+    remove_trailing_brs: false,
+    extended_valid_elements:'+@[data-options],script[language|type|src],a[href|onclick|style|target|class]',
+    style_formats: [
+      {title: 'Headers', items: [
+        {title: 'Header 1', format: 'h1'},
+        {title: 'Header 2', format: 'h2'},
+        {title: 'Header 3', format: 'h3'},
+        {title: 'Header 4', format: 'h4'},
+        {title: 'Header 5', format: 'h5'},
+        {title: 'Header 6', format: 'h6'}
+      ]},
+      {title: 'Inline', items: [
+        {title: 'Bold', icon: 'bold', format: 'bold'},
+        {title: 'Italic', icon: 'italic', format: 'italic'},
+        {title: 'Underline', icon: 'underline', format: 'underline'},
+        {title: 'Strikethrough', icon: 'strikethrough', format: 'strikethrough'},
+        {title: 'Superscript', icon: 'superscript', format: 'superscript'},
+        {title: 'Subscript', icon: 'subscript', format: 'subscript'},
+        {title: 'Code', icon: 'code', format: 'code'}
+      ]},
+      {title: 'Blocks', items: [
+        {title: 'Paragraph', format: 'p'},
+        {title: 'Blockquote', format: 'blockquote'},
+        {title: 'Div', format: 'div'},
+        {title: 'Pre', format: 'pre'}
+      ]},
+      {title: 'Alignment', items: [
+        {title: 'Left', icon: 'alignleft', format: 'alignleft'},
+        {title: 'Center', icon: 'aligncenter', format: 'aligncenter'},
+        {title: 'Right', icon: 'alignright', format: 'alignright'},
+        {title: 'Justify', icon: 'alignjustify', format: 'alignjustify'}
+      ]},
+      {title: 'Site Colors Text', items: [
+        {title: 'Site Color 1', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-1'},
+        {title: 'Site Color 2', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-2'},
+        {title: 'Site Color 3', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-3'},
+        {title: 'Site Color 4', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-4'},
+        {title: 'Site Color 5', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-5'},
+        {title: 'Site Color 6', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-6'},
+      ]},
+      {title: 'Site Colors Background', items: [
+        {title: 'Site Color 1', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-1-bg'},
+        {title: 'Site Color 2', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-2-bg'},
+        {title: 'Site Color 3', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-3-bg'},
+        {title: 'Site Color 4', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-4-bg'},
+        {title: 'Site Color 5', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-5-bg'},
+        {title: 'Site Color 6', selector: 'div,button,a,p,ul,li,h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6', classes: 'site-color-6-bg'},
+      ]},
+    ]
+  });
+  </script>
+  <link href="/images/layout/favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <cfif cgi.script_name contains 'login'>
+    <div id="logo">
+      <img src="/admin/bootstrap/img/logo.png">
+    </div>
+  <cfelse>
+    <div id="header">
+      <h1><a href="/admin/dashboard.cfm">ICND Admin</a></h1>
+    </div>
+    <div id="user-nav" class="navbar navbar-inverse">
+      <ul class="nav btn-group">
+        <cfoutput><li class="btn btn-inverse"><a title="" href="/admin/users/form.cfm?id=#session.loggedInUserStruct.LoggedInID#"><i class="icon icon-user"></i> <span class="text">#session.loggedInUserStruct.LoggedInName#</span></a></li></cfoutput>
+        <li class="btn btn-inverse"><a title="" href="/admin/settings"><i class="icon icon-cog"></i> <span class="text">Settings</span></a></li>
+        <li class="btn btn-inverse"><a title="" href="/admin/login.cfm?logout"><i class="icon icon-share-alt"></i> <span class="text">Logout</span></a></li>
+      </ul>
+    </div>
+    <!--- Start the left side navigation here --->
+    <cfoutput>
+    <div id="sidebar">
+      <a href="/admin/dashboard.cfm" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
+      <ul>
+        <li<cfif cgi.script_name contains "/admin/dashboard.cfm"> class="active"</cfif>><a href="/admin/dashboard.cfm"><i class="icon icon-home"></i> <span>Dashboard</span></a></li>
+        <li<cfif cgi.script_name contains "/admin/users/"> class="active"</cfif>><a href="/admin/users/"><i class="icon icon-user"></i> <span>Users</span> <span class="label">#getNumUsers.numUsers#</span></a></li>
+        <li<cfif cgi.script_name contains "/admin/contacts/"> class="active"</cfif>><a href="/admin/contacts/"><i class="icon icon-comment"></i> <span>Contacts</span> <span class="label">#numContacts#</span></a></li>
+
+        <li class="submenu <cfif  cgi.script_name contains '/admin/pages/' or
+                                  cgi.script_name contains '/admin/ads/' or
+                                  cgi.script_name contains '/admin/homeslideshow/' or
+                                  cgi.script_name contains '/admin/documents/' or
+                                  cgi.script_name contains '/admin/multi-upload-gallery/' or
+                                  cgi.script_name contains '/admin/events/' or
+                                  cgi.script_name contains '/admin/events-recurring/' or
+                                  cgi.script_name contains '/admin/thingstodo/' or
+                                  cgi.script_name contains '/admin/testimonials/' or
+                                  cgi.script_name contains '/admin/staff/' or
+                                  cgi.script_name contains '/admin/faqs/' or
+                                  cgi.script_name contains '/admin/callouts/' or
+								  cgi.script_name contains '/admin/pixel-codes/' or
+                                  cgi.script_name contains '/admin/resorts/'
+                            >open</cfif>">
+            <a href="##"><i class="icon icon-chevron-down"></i> <span>Manage Content</span> </a>
+            <ul>
+               <li<cfif cgi.script_name contains "/admin/pages/"> class="active"</cfif>><a href="/admin/pages/"><i class="icon icon-file"></i> <span>Pages</span> <span class="label">#numPages.numPages#</span></a></li>
+
+<li<cfif cgi.script_name contains "/admin/pixel-codes/"> class="active"</cfif>><a href="/admin/pixel-codes/"><i class="icon icon-ok"></i> <span>Pixel Codes</span></a></li>
+
+               <cfif FileExists('#adminPath#\ads\index.cfm')>
+                  <cfset numAds = getCount('cms_ads')>
+                  <li<cfif cgi.script_name contains "/admin/ads/"> class="active"</cfif>><a href="/admin/ads/"><i class="icon icon-film"></i> <span>Ads</span> <span class="label">#numAds#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\homeslideshow\index.cfm')>
+                  <cfquery name="numHomeSlides" dataSource="#dsn#">
+                  select count(id) as 'numHomeSlides' from cms_assets where section = 'Homepage Slideshow'
+                  </cfquery>
+                  <li<cfif cgi.script_name contains "/admin/homeslideshow/"> class="active"</cfif>><a href="/admin/homeslideshow/"><i class="icon icon-picture"></i> <span>Home Slideshow</span> <span class="label">#numHomeSlides.numHomeSlides#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\documents\index.cfm')>
+                  <cfquery name="numDocs" dataSource="#dsn#">
+                  select count(id) as numDocs from cms_assets where section = 'Documents'
+                  </cfquery>
+                  <li<cfif cgi.script_name contains "/admin/documents/"> class="active"</cfif>><a href="/admin/documents/"><i class="icon icon-file"></i> <span>Documents</span> <span class="label">#numDocs.numDocs#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\multi-upload-gallery\index.cfm')>
+                  <cfquery name="numGalleryPhotos" dataSource="#dsn#">
+                  select count(id) as 'numGalleryPhotos' from cms_assets where section = 'Gallery'
+                  </cfquery>
+                  <li<cfif cgi.script_name contains "/admin/multi-upload-gallery/"> class="active"</cfif>><a href="/admin/multi-upload-gallery/"><i class="icon icon-picture"></i> <span>Gallery</span> <span class="label">#numGalleryPhotos.numGalleryPhotos#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\events\index.cfm')>
+                  <cfset numEvents = getCount('cms_eventcal')>
+                  <li<cfif cgi.script_name contains "/admin/events/"> class="active"</cfif>><a href="/admin/events/"><i class="icon icon-calendar"></i> <span>Events</span> <span class="label">#numEvents#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\events-recurring\index.cfm')>
+                  <cfset numEvents = getCount('cms_eventcal')>
+                  <li<cfif cgi.script_name contains "/admin/events-recurring/"> class="active"</cfif>><a href="/admin/events-recurring/"><i class="icon icon-calendar"></i> <span>Events - Reccuring</span> <span class="label">#numEvents#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\thingstodo\index.cfm')>
+                  <cfset numThingsToDo = getCount('cms_thingstodo')>
+                  <li<cfif cgi.script_name contains "/admin/thingstodo/"> class="active"</cfif>><a href="/admin/thingstodo/"><i class="icon icon-calendar"></i> <span>Things To Do</span> <span class="label">#numThingsToDo#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\testimonials\index.cfm')>
+                  <cfset numTestimonials = getCount('cms_testimonials')>
+                  <li<cfif cgi.script_name contains "/admin/testimonials/"> class="active"</cfif>><a href="/admin/testimonials/"><i class="icon icon-comment"></i> <span>Testimonials</span> <span class="label">#numTestimonials#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\staff\index.cfm')>
+                  <cfset numStaff = getCount('cms_staff')>
+                  <li<cfif cgi.script_name contains "/admin/staff/"> class="active"</cfif>><a href="/admin/staff/"><i class="icon icon-user"></i> <span>Staff</span> <span class="label">#numStaff#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\faqs\index.cfm')>
+                  <cfset numFAQs = getCount('cms_faqs')>
+                  <li<cfif cgi.script_name contains "/admin/faqs/"> class="active"</cfif>><a href="/admin/faqs/"><i class="icon icon-question-sign"></i> <span>FAQs</span> <span class="label">#numFAQs#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\callouts\index.cfm')>
+                  <cfset numCallouts = getCount('cms_callouts')>
+                  <li<cfif cgi.script_name contains "/admin/callouts/"> class="active"</cfif>><a href="/admin/callouts/"><i class="icon icon-bullhorn"></i> <span>Callouts</span> <span class="label">#numCallouts#</span></a></li>
+               </cfif>
+
+               <cfif FileExists('#adminPath#\resorts\index.cfm')>
+                  <cfset numResorts = getCount('cms_resorts')>
+                  <li<cfif cgi.script_name contains "/admin/resorts/"> class="active"</cfif>><a href="/admin/resorts/"><i class="icon icon-certificate"></i> <span>Resorts</span> <span class="label">#numResorts#</span></a></li>
+               </cfif>
+
+            </ul>
+         </li>
+
+
+
+        <li class="submenu <cfif  cgi.script_name contains '/admin/specials/' or
+                                  cgi.script_name contains '/admin/reviews/' or
+                                  cgi.script_name contains '/admin/property_q_and_a/' or
+                                  cgi.script_name contains '/admin/flipkey/' or
+                                  cgi.script_name contains '/admin/properties/' or
+                                  cgi.script_name contains '/admin/data-harvest/' or
+                                  cgi.script_name contains '/admin/featured-properties/' or
+                                  cgi.script_name contains '/admin/long-term-rentals/' or
+                                  cgi.script_name contains '/admin/amenities/' or
+                                  cgi.script_name contains '/admin/terms/' or
+                                  cgi.script_name contains '/admin/remind-to-book/'
+                            >open</cfif>">
+         <a href="##"><i class="icon icon-chevron-down"></i> <span>Manage Booking Engine</span> </a>
+         <ul>
+
+           <cfif FileExists('#adminPath#\specials\index.cfm')>
+             <cfset numSpecials = getCount('cms_specials')>
+             <li<cfif cgi.script_name contains "/admin/specials/"> class="active"</cfif>><a href="/admin/specials/"><i class="icon icon-certificate"></i> <span>Specials</span> <span class="label">#numSpecials#</span></a></li>
+           </cfif>
+
+           <cfif FileExists('#adminPath#\reviews\index.cfm')>
+             <cfset numReviews = getCount('be_reviews')>
+             <li<cfif cgi.script_name contains "/admin/reviews/"> class="active"</cfif>><a href="/admin/reviews/"><i class="icon icon-certificate"></i> <span>Reviews</span> <span class="label">#numReviews#</span></a></li>
+           </cfif>
+
+           <cfif FileExists('#adminPath#\property_q_and_a\index.cfm')>
+             <cfset numPropertyQA = getCount('be_questions_and_answers_properties')>
+             <li<cfif cgi.script_name contains "/admin/property_q_and_a/"> class="active"</cfif>><a href="/admin/property_q_and_a/"><i class="icon icon-certificate"></i> <span>Property Q/A</span> <span class="label">#numPropertyQA#</span></a></li>
+           </cfif>
+
+           <cfif FileExists('#adminPath#\flipkey\index.cfm')>
+             <!--- write a query to get the total num properties --->
+             <li<cfif cgi.script_name contains "/admin/flipkey/"> class="active"</cfif>><a href="/admin/flipkey/"><i class="icon icon-certificate"></i> <span>Flipkey IDs</span> <span class="label">0</span></a></li>
+           </cfif>
+
+           <cfif FileExists('#adminPath#\properties\index.cfm')>
+             <!--- write a query to get the total num properties --->
+             <li<cfif cgi.script_name contains "/admin/properties/"> class="active"</cfif>><a href="/admin/properties/"><i class="icon icon-certificate"></i> <span>VR Enhancement</span> <span class="label">0</span></a></li>
+           </cfif>
+
+       <cfif FileExists('#adminPath#\remind-to-book\index.cfm')>
+             <cfset numReminderToBook = getCount('cms_remindtobook')>
+             <li<cfif cgi.script_name contains "/admin/remind-to-book/"> class="active"</cfif>><a href="/admin/remind-to-book/"><i class="icon icon-certificate"></i> <span>Remind To Book</span> <span class="label">#numReminderToBook#</span></a></li>
+           </cfif>
+
+           <li<cfif cgi.script_name contains "/admin/data-harvest/"> class="active"</cfif>><a href="/admin/data-harvest/form.cfm"><i class="icon icon-ok"></i> <span>Data Harvest</span></a></li>
+
+           <!---
+<cfif FileExists('#adminPath#\rewrites\index.cfm')>
+             <cfset numTestimonials = getCount('cms_rewrites')>
+             <li<cfif cgi.script_name contains "/admin/rewrites/"> class="active"</cfif>><a href="/admin/rewrites/"><i class="icon icon-file"></i> <span>Rewrites</span> <span class="label">#numTestimonials#</span></a></li>
+           </cfif>
+--->
+
+           <cfif FileExists('#adminPath#\featured-properties\index.cfm')>
+             <li<cfif cgi.script_name contains "/admin/featured-properties/"> class="active"</cfif>><a href="/admin/featured-properties/"><i class="icon icon-file"></i> <span>Featured Properties</span> </a></li>
+           </cfif>
+
+           <cfif FileExists('#adminPath#\long-term-rentals\index.cfm')>
+             <li<cfif cgi.script_name contains "/admin/long-term-rentals/"> class="active"</cfif>><a href="/admin/long-term-rentals/"><i class="icon icon-home"></i> <span>Long Term Rentals</span> </a></li>
+           </cfif>
+
+           <cfif FileExists('#adminPath#\amenities\index.cfm')>
+             <li<cfif cgi.script_name contains "/admin/amenities/"> class="active"</cfif>><a href="/admin/amenities/"><i class="icon icon-home"></i> <span>Amenities</span> </a></li>
+           </cfif>
+
+           <cfif FileExists('#adminPath#\terms\form.cfm')>
+             <li<cfif cgi.script_name contains "/admin/terms/"> class="active"</cfif>><a href="/admin/terms/form.cfm"><i class="icon icon-file"></i> <span>Booking Terms</span> </a></li>
+           </cfif>
+
+        </ul>
+      </li>
+
+
+
+
+
+    <li<cfif cgi.script_name contains "/admin/guest-focus-members/"> class="active"</cfif>><a href="/admin/guest-focus-members/index.cfm"><i class="icon icon-user"></i> <span>Guest Focus Members</span> </a></li>
+
+
+    <li class="submenu
+        <cfif cgi.script_name contains '/admin/guest-loyalty'>open</cfif>">
+      <a href="##"><i class="icon icon-chevron-down"></i> <span>Manage Guest Loyalty</span> </a>
+      <ul>
+        <li<cfif cgi.script_name contains "/admin/guest-loyalty/point-value"> class="active"</cfif>><a href="/admin/guest-loyalty/point-value/index.cfm?id=1"><i class="icon icon-question-sign"></i> <span>Point Value</span></a></li>
+        <li<cfif cgi.script_name contains "/admin/guest-loyalty/point-levels"> class="active"</cfif>><a href="/admin/guest-loyalty/point-levels/"><i class="icon icon-question-sign"></i> <span>Point Levels</span></a></li>
+        <li<cfif cgi.script_name contains "/admin/guest-loyalty/reports"> class="active"</cfif>><a href="/admin/guest-loyalty/reports/"><i class="icon icon-question-sign"></i> <span>Reporting</span></a></li>
+        <li<cfif cgi.script_name contains "/admin/guest-loyalty/redeem-requests"> class="active"</cfif>><a href="/admin/guest-loyalty/redeem-requests/"><i class="icon icon-question-sign"></i> <span>Redemption Requests</span></a></li>
+        <li<cfif cgi.script_name contains "/admin/guest-loyalty/faqs"> class="active"</cfif>><a href="/admin/guest-loyalty/faqs/"><i class="icon icon-question-sign"></i> <span>FAQs</span></a></li>
+      </ul>
+    </li>
+
+
+
+
+        <cfif session.loggedInUserStruct.LoggedInRole EQ 'icnd'>
+          <li class="submenu">
+            <a href="javascript:;"><i class="icon icon-ban-circle"></i> <span>ICND Only</span></a>
+            <ul style="display: none;">
+              <li><a href="/admin/pages/quick-view.cfm">Meta View</a></li>
+              <li><a href="/admin/pages/notfound-frequency.cfm">404 table</a></li>
+              <cfif FileExists('#adminPath#\icnd\thingstodo-categories\view.cfm')>
+                <li><a href="/admin/icnd/thingstodo-categories/view.cfm">Meta View for Things To Do Categories</a></li>
+              </cfif>
+              <cfif FileExists('#adminPath#\icnd\resorts\view.cfm')>
+                <li><a href="/admin/icnd/resorts/view.cfm">Meta View for Resorts</a></li>
+              </cfif>
+              <cfif FileExists('#adminPath#\icnd\long-term-rentals\view.cfm')>
+                <li><a href="/admin/icnd/long-term-rentals/view.cfm">Meta View for Long Term Rentals</a></li>
+              </cfif>
+            </ul>
+          </li>
+        </cfif>
+      </ul>
+    </div>
+  </cfoutput>
+  <!--- End the left side navigation --->
+  <div id="content">
+    <div id="content-header">
+
+      <h1><cfoutput>#page.title#</cfoutput></h1>
+      <cfif session.loggedInUserStruct.LoggedInRole EQ 'icnd' and cgi.server_name neq 'demo.icnd.net' and cgi.server_name neq 'demo.builder.icnd.net'>
+      <p style="clear:left;padding-top:20px;padding-left:20px;color:red;font-weight:bold">
+        Your datasource is currently pointing to: <u><cfoutput>#settings.dsn#</cfoutput></u>.
+        If you are not on the demo.icnd.net website, STOP! Your next step is to run the
+        CMS installer script on Git before doing anything else.
+      </p>
+      </cfif>
+    </div>
+    <div id="breadcrumb">
+      <a href="/admin/dashboard.cfm" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+      <span style="font-weight:bold;color:#444;font-size:11px;padding-left:7px"><cfoutput>#page.title#</cfoutput></span>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+  </cfif>

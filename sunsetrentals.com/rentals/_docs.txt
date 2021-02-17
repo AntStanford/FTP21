@@ -1,0 +1,149 @@
+Booking Engine 2.0 Documentation
+
+Terms:
+
+PMS = property management system (ex. Homeaway, Escapia, Barefoot,etc)
+
+Document:
+
+The purpose of this document is to document the features and functionality of our latest booking engine which can be viewed at cms2.icnd.net.
+
+New features:
+
+The main differences between BE 1.0 and 2.0 are:
+
+1. No more advanced search page
+
+2. Search Results
+
+	- The search results page uses a 2 column layout with properties on the left and a map on the right.
+
+	- The refine search has been moved from the left side to the top 
+	
+	- As you hover over each property on the left, the location marker on the right increases in size and changes color.
+	
+	- You can view your search results in 2 additional views: grid view (which removes the map) and map view (which removes the grid of properties).
+	
+	- The map shows all units returned by the search results at all times.
+	
+	- The property grid uses infinite scroll; as you move down the page another 12 properties is loaded into view.
+	
+	- Users can click on the heart icon in the top right corner of each property photo to add/remove that unit from their favorites
+	
+	- Users have the option to create an account which contains all their favs and most recent bookings.
+	
+	- The property detail page and checkout page now open in a new tab
+	
+	- Clients can manage the list of Amenities in the More Filters drop down in the admin area under Manage Booking Engine -> Amenities
+	
+3. Property Detail page
+
+	- Features a large hero image at the top; users can toggle between a map or photo gallery.
+	
+	- The different sections of the page use a sticky nav and follow you down the page (Description, Calendar, Rates, etc)
+	
+	- The date selector is located on the right side of the page and follows you down the page
+	
+	- Click the arrow icon in the top right corner to share the property on social media or send to a friend using the contact form.
+	
+	- Specials - uses a dummy special on cms2.icnd.net but will adjust on your dev site if special exists
+	
+	- View tour - only shows on cms2.icnd.net for demo purposes; adjust if your client uses virtual tours 
+
+4. Inside the booking folder, the company logo is minified and all header images removed. We also use a minified footer with basic contact methods.
+
+5. Instead of having an entire booking engine for each PMS, we have a common booking engine layout that uses standard naming conventions. 
+
+In the 'components' folder, you will find the following 3 files:
+
+Escapia.cfc
+Homeaway.cfc
+Barefoot.cfc
+
+The application file will use the correct component based on the specific project/client you are working on.
+
+The .cfc contains all the PMS specific functions you need for the entire booking engine; if you are working on a project other than those 3 vendors, you will need to
+create a new .cfc and use the same function names. 
+
+6. There are several places in the core code that use CFIF statements to display data based on the PMS you are using. Example:
+
+<cfif settings.booking.pms eq 'Escapia'>
+	do this
+<cfelse>
+	do that
+</cfif>
+
+You might need to update that CFIF statement if you are working with a new PMS.
+
+7. In the admin area, the client will now have the ability to view all users who created an account on the website (see Guest Focus Members)
+
+8. Each PMS works a bit differently in the search results; here are the 3 most common vendors we integrate with and how the data is used:
+
+
+Escapia:
+
+Dates - use the API
+
+Guests - use API
+
+Bedrooms - use API
+
+Must Haves - results-search-query-common.cfm
+
+Price Range - use API
+
+Amenities - results-search-query-common.cfm
+
+Unit Type - results-search-query-common.cfm
+
+Area - results-search-query-common.cfm
+
+
+Barefoot:
+
+Dates - use the API
+
+Guests - results-search-query-common.cfm
+
+Bedrooms - results-search-query-common.cfm
+
+Must Haves - results-search-query-common.cfm
+
+Price Range - results-search-query-common.cfm
+
+Amenities - results-search-query-common.cfm
+
+Unit Type - results-search-query-common.cfm
+
+Area - results-search-query-common.cfm
+
+
+
+Homeway:
+
+Dates - results-search-query.cfm
+
+Guests - results-search-query-common.cfm
+
+Bedrooms - results-search-query-common.cfm
+
+Must Haves - results-search-query-common.cfm
+
+Price Range - results-search-query-common.cfm
+
+Amenities - results-search-query-common.cfm
+
+Unit Type - results-search-query-common.cfm
+
+Area - results-search-query-common.cfm
+
+
+9. Book Now - the property information and summary of fees has been moved to the left column
+
+10. Javascripts - the JS files have been broken down into 3 main files to help you find the code even faster.  global.js, property.js and results.js 
+
+property.js and results.js contain scripts that are contextual and only relate to those pages; global.js has everything else.
+
+11. On the PDP, the Send to Friend, Submit a Review and Submit an FAQ form all have Google reCaptcha installed to reduce spam.
+
+

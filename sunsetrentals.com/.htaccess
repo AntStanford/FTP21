@@ -1,0 +1,1447 @@
+#STANDARD HTACCESS FILE FROM ICND - Last Updated June 24,2017
+
+#IMPORTANT NOTES:  Do NOT change the order of any of these items. The ORDER OF OPERATIONS IS VERY IMPORTANT.  If something needs to be ADDED that is not INCLUDED, then please discuss with your department head before adding.
+
+# /////////////////////////////
+# ALWAYS INCLUDED to allow rewrites
+# /////////////////////////////
+
+RewriteEngine On
+
+# /////////////////////////////
+# REDIRECT ANY SUBDOMAINS AND REDIRECT NON WWW TO WWWW
+# /////////////////////////////
+
+#REDIRECTION OF A SUBDOMAIN OF THE MAIN DOMAIN TO THE MAIN DOMAIN (uncomment if needed)
+RewriteCond %{HTTP_HOST} ^blog.sunsetrentals\.com$ [OR]
+
+#REDIRECTION OF ALIAS DOMAIN AND ALIAS DOMAIN SUBDOMAINS TO MAIN DOMAIN (uncomment if needed)
+#RewriteCond %{HTTP_HOST} ^www.aliasdomain1\.com$ [OR]
+#RewriteCond %{HTTP_HOST} ^aliasdomain\.com1$ [OR]
+#RewriteCond %{HTTP_HOST} ^www.aliasdomain2\.com$ [OR]
+#RewriteCond %{HTTP_HOST} ^aliasdomain2\.com$ [OR]
+
+
+#MAIN DOMAIN NON WWW TO WWW (always leave in)
+RewriteCond %{HTTP_HOST} ^sunsetrentals\.com$ [NC]
+RewriteRule ^(.*)$ https://www.sunsetrentals.com/$1 [R=301,L,NC]
+
+
+# /////////////////////////////
+# Uncomment to make site pure HTTPS
+# /////////////////////////////
+
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301,NC]
+
+
+#rewrite rule for the apple icons
+RewriteCond %{REQUEST_URI} !^/apple-touch-icon\.png$
+RewriteRule ^apple(.*)\.png$ /apple-touch-icon.png [R=301,L]
+
+
+
+# /////////////////////////////
+# SEO TEAM: 301 DIRECTS GO HERE from SEO TEAM
+# /////////////////////////////
+
+##PROPERTIES
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=99704($|&)
+RewriteRule $ /rentals/evian\-234? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=100183($|&)
+RewriteRule $ /rentals/gloucester\-79? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=102795($|&)
+RewriteRule $ /rentals/turnberry\-207? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=103002($|&)
+RewriteRule $ /rentals/coligny\-villas\-43? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=103396($|&)
+RewriteRule $ /rentals/ocean\-breeze\-66? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=104181($|&)
+RewriteRule $ /rentals/ocean\-one\-103? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=104315($|&)
+RewriteRule $ /rentals/island\-house\-108? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=104534($|&)
+RewriteRule $ /rentals/links\-10b? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=105775($|&)
+RewriteRule $ /rentals/hampton\-place\-6406? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=106183($|&)
+RewriteRule $ /rentals/bittern\-street\-1? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=108953($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=109397($|&)
+RewriteRule $ /rentals/devonshire\-209? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=109473($|&)
+RewriteRule $ /rentals/jessamine\-place\-2? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=109773($|&)
+RewriteRule $ /rentals/beachwalk\-208? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=109899($|&)
+RewriteRule $ /rentals/st\-andrews\-1780? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=110178($|&)
+RewriteRule $ /rentals/st\-andrews\-1779? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=110281($|&)
+RewriteRule $ /rentals/wendover\-dunes\-8117? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=110546($|&)
+RewriteRule $ /rentals/mooring\-buoy\-175? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=110918($|&)
+RewriteRule $ /rentals/turnberry\-226? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=112058($|&)
+RewriteRule $ /rentals/wildwood\-23? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=114843($|&)
+RewriteRule $ /rentals/beachside\-tns\-1870? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=114947($|&)
+RewriteRule $ /rentals/captains\-walk\-409? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=115112($|&)
+RewriteRule $ /rentals/evian\-169? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=115952($|&)
+RewriteRule $ /rentals/port\-tack\-66? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=116336($|&)
+RewriteRule $ /rentals/forest\-drive\-13? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=117350($|&)
+RewriteRule $ /rentals/cottages\-11? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=117805($|&)
+RewriteRule $ /rentals/island\-house\-126? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=118013($|&)
+RewriteRule $ /rentals/shorewood\-439? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=118196($|&)
+RewriteRule $ /rentals/courtside\-24? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=119054($|&)
+RewriteRule $ /rentals/beachwalk\-159? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=119109($|&)
+RewriteRule $ /rentals/deer\-run\-26? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=119118($|&)
+RewriteRule $ /rentals/lyons\-10? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=119727($|&)
+RewriteRule $ /rentals/evian\-156? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=121001($|&)
+RewriteRule $ /rentals/bradley\-circle\-9? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=121124($|&)
+RewriteRule $ /rentals/st\-andrews\-1968? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=121146($|&)
+RewriteRule $ /rentals/haul\-away\-33? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=121161($|&)
+RewriteRule $ /rentals/bluff\-villas\-1720? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=122355($|&)
+RewriteRule $ /rentals/breakers\-326? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=123359($|&)
+RewriteRule $ /rentals/ocean\-breeze\-20? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=123889($|&)
+RewriteRule $ /rentals/royal\-tern\-10? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=125500($|&)
+RewriteRule $ /rentals/evian\-203? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=125644($|&)
+RewriteRule $ /rentals/island\-club\-2103? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=125646($|&)
+RewriteRule $ /rentals/mooring\-buoy\-62? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=125653($|&)
+RewriteRule $ /rentals/island\-house\-138? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=125754($|&)
+RewriteRule $ /rentals/full\-sweep\-64? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=126274($|&)
+RewriteRule $ /rentals/ocean\-breeze\-7003? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=126291($|&)
+RewriteRule $ /rentals/shelley\-court\-7? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=126865($|&)
+RewriteRule $ /rentals/off\-shore\-57? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=126867($|&)
+RewriteRule $ /rentals/baynard\-park\-6? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=127298($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=127657($|&)
+RewriteRule $ /rentals/st\-andrews\-1876? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=128284($|&)
+RewriteRule $ /rentals/golfmaster\-1804? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=128286($|&)
+RewriteRule $ /rentals/shorewood\-232? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=128468($|&)
+RewriteRule $ /rentals/greens\-140? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=128875($|&)
+RewriteRule $ /rentals/turnberry\-260? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=128927($|&)
+RewriteRule $ /rentals/ocean\-club\-22? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=129582($|&)
+RewriteRule $ /rentals/sandhill\-crane\-17? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=129586($|&)
+RewriteRule $ /rentals/mooring\-buoy\-179? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=129602($|&)
+RewriteRule $ /rentals/surf\-scoter\-20? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=131071($|&)
+RewriteRule $ /rentals/off\-shore\-63? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=131218($|&)
+RewriteRule $ /rentals/tennismaster\-802? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=131559($|&)
+RewriteRule $ /rentals/evian\-297? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=132226($|&)
+RewriteRule $ /rentals/evian\-290? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=132670($|&)
+RewriteRule $ /rentals/island\-house\-101? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=132679($|&)
+RewriteRule $ /rentals/ocean\-cove\-835? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=132867($|&)
+RewriteRule $ /rentals/greens\-189? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=133057($|&)
+RewriteRule $ /rentals/tennismaster\-1101? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=134457($|&)
+RewriteRule $ /rentals/forest\-drive\-14? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=135286($|&)
+RewriteRule $ /rentals/forest\-bch\-villa\-206? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=135820($|&)
+RewriteRule $ /rentals/harbourside\-villa\-7116? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=136226($|&)
+RewriteRule $ /rentals/black\-duck\-7? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=136241($|&)
+RewriteRule $ /rentals/queens\-grant\-790? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=136689($|&)
+RewriteRule $ /rentals/calibogue\-cay\-2609? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=138049($|&)
+RewriteRule $ /rentals/st\-andrews\-1856? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=138057($|&)
+RewriteRule $ /rentals/corine\-lane\-13? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=139363($|&)
+RewriteRule $ /rentals/north\-sea\-pines\-70? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=139712($|&)
+RewriteRule $ /rentals/captains\-walk\-458? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=140288($|&)
+RewriteRule $ /rentals/ibis\-12? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=140799($|&)
+RewriteRule $ /rentals/villamare\-3226? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=140800($|&)
+RewriteRule $ /rentals/villamare\-3227? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=140803($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=141175($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=141868($|&)
+RewriteRule $ /rentals/crabline\-35? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=142044($|&)
+RewriteRule $ /rentals/horvaths\-peninsula\-20? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=143063($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=143323($|&)
+RewriteRule $ /rentals/greens\-195? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=143584($|&)
+RewriteRule $ /rentals/ocean\-breeze\-9? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=143643($|&)
+RewriteRule $ /rentals/ocean\-one\-113? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=144010($|&)
+RewriteRule $ /rentals/plantation\-club\-533? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=144106($|&)
+RewriteRule $ /rentals/egret\-5? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=144840($|&)
+RewriteRule $ /rentals/rum\-row\-29? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=144935($|&)
+RewriteRule $ /rentals/junket\-5? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=145286($|&)
+RewriteRule $ /rentals/lookout\-3? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=146259($|&)
+RewriteRule $ /rentals/forest\-bch\-villa\-117? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=146463($|&)
+RewriteRule $ /rentals/shorewood\-107? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=147033($|&)
+RewriteRule $ /rentals/gloucester\-19? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=148087($|&)
+RewriteRule $ /rentals/gloucester\-77? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=148425($|&)
+RewriteRule $ /rentals/off\-shore\-4? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=148613($|&)
+RewriteRule $ /rentals/queens\-grant\-733? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=148905($|&)
+RewriteRule $ /rentals/greens\-161? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=150399($|&)
+RewriteRule $ /rentals/beachwalk\-109? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=150801($|&)
+RewriteRule $ /rentals/queens\-grant\-690? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=151165($|&)
+RewriteRule $ /rentals/evian\-215? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=152029($|&)
+RewriteRule $ /rentals/duck\-hawk\-27? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=153055($|&)
+RewriteRule $ /rentals/ocean\-cove\-808? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=153066($|&)
+RewriteRule $ /rentals/west\-beach\-lagoon\-23? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=153074($|&)
+RewriteRule $ /rentals/kingston\-29? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=153194($|&)
+RewriteRule $ /rentals/island\-house\-125? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=154067($|&)
+RewriteRule $ /rentals/huntington\-7622? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=154486($|&)
+RewriteRule $ /rentals/fazio\-32? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=154651($|&)
+RewriteRule $ /rentals/captains\-walk\-429? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=154698($|&)
+RewriteRule $ /rentals/crabline\-32? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=154763($|&)
+RewriteRule $ /rentals/tennismaster\-1205? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=154809($|&)
+RewriteRule $ /rentals/island\-house\-147? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=154821($|&)
+RewriteRule $ /rentals/evian\-252? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=154963($|&)
+RewriteRule $ /rentals/fazio\-35? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=155091($|&)
+RewriteRule $ /rentals/ketch\-court\-891? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=155196($|&)
+RewriteRule $ /rentals/captains\-walk\-444? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=155271($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=155289($|&)
+RewriteRule $ /rentals/waterford\-e3? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=155543($|&)
+RewriteRule $ /rentals/port\-tack\-84? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=155618($|&)
+RewriteRule $ /rentals/shorewood\-131? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=155949($|&)
+RewriteRule $ /rentals/north\-shore\-pl\-208? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=155950($|&)
+RewriteRule $ /rentals/evian\-213? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=156033($|&)
+RewriteRule $ /rentals/lagoon\-29? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=156282($|&)
+RewriteRule $ /rentals/greens\-190? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=156945($|&)
+RewriteRule $ /rentals/evian\-135? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=156965($|&)
+RewriteRule $ /rentals/myrtle\-lane\-1? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=156967($|&)
+RewriteRule $ /rentals/midstream\-5? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=156987($|&)
+RewriteRule $ /rentals/colonnade\-club\-149? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=157396($|&)
+RewriteRule $ /rentals/greens\-194? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=157545($|&)
+RewriteRule $ /rentals/beachwalk\-150? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=157718($|&)
+RewriteRule $ /rentals/evian\-192? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=157721($|&)
+RewriteRule $ /rentals/sea\-lane\-29? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=158532($|&)
+RewriteRule $ /rentals/racquet\-club\-2314? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=158986($|&)
+RewriteRule $ /rentals/seascape\-3254? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=159430($|&)
+RewriteRule $ /rentals/barrington\-court\-217? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=159508($|&)
+RewriteRule $ /rentals/sailmaster\-37? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=159652($|&)
+RewriteRule $ /rentals/mooring\-buoy\-107? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=159750($|&)
+RewriteRule $ /rentals/ocean\-breeze\-27? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=160305($|&)
+RewriteRule $ /rentals/swing\-about\-1? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=160307($|&)
+RewriteRule $ /rentals/shipmaster\-1602? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=160433($|&)
+RewriteRule $ /rentals/ketch\-court\-820? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=160614($|&)
+RewriteRule $ /rentals/ocean\-one\-320? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=160777($|&)
+RewriteRule $ /rentals/bluff\-villas\-1726? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=160905($|&)
+RewriteRule $ /rentals/kingston\-dunes\-66? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=161500($|&)
+RewriteRule $ /rentals/ocean\-dunes\-221? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=161506($|&)
+RewriteRule $ /rentals/evian\-162? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=161754($|&)
+RewriteRule $ /rentals/ocean\-dunes\-408? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=162590($|&)
+RewriteRule $ /rentals/hickory\-cove\-2? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=162654($|&)
+RewriteRule $ /rentals/ocean\-breeze\-1? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=162902($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82208($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82209($|&)
+RewriteRule $ /rentals/sutherland\-1? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82210($|&)
+RewriteRule $ /rentals/off\-shore\-10? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82214($|&)
+RewriteRule $ /rentals/evian\-103? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82217($|&)
+RewriteRule $ /rentals/dune\-lane\-105? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82218($|&)
+RewriteRule $ /rentals/north\-shore\-pl\-105? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82221($|&)
+RewriteRule $ /rentals/forest\-bch\-villa\-107? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82222($|&)
+RewriteRule $ /rentals/north\-shore\-pl\-109? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82225($|&)
+RewriteRule $ /rentals/beachwalk\-110? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82226($|&)
+RewriteRule $ /rentals/tennismaster\-1103? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82227($|&)
+RewriteRule $ /rentals/tennismaster\-1104? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82228($|&)
+RewriteRule $ /rentals/oceanwood\-111? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82229($|&)
+RewriteRule $ /rentals/oceanwood\-113? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82230($|&)
+RewriteRule $ /rentals/barrington\-court\-114? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82231($|&)
+RewriteRule $ /rentals/sand\-castle\-114? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82233($|&)
+RewriteRule $ /rentals/barrington\-court\-117? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82234($|&)
+RewriteRule $ /rentals/breakers\-117? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82235($|&)
+RewriteRule $ /rentals/devonshire\-119? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82236($|&)
+RewriteRule $ /rentals/greens\-119? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82237($|&)
+RewriteRule $ /rentals/lyons\-12? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82240($|&)
+RewriteRule $ /rentals/ocean\-one\-122? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82241($|&)
+RewriteRule $ /rentals/abbington\-124? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82243($|&)
+RewriteRule $ /rentals/dune\-lane\-127? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82249($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82251($|&)
+RewriteRule $ /rentals/villamare\-1405? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82252($|&)
+RewriteRule $ /rentals/island\-house\-141? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82255($|&)
+RewriteRule $ /rentals/greens\-151? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82258($|&)
+RewriteRule $ /rentals/shipmaster\-1605? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82259($|&)
+RewriteRule $ /rentals/mooring\-buoy\-163? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82260($|&)
+RewriteRule $ /rentals/evian\-164? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82261($|&)
+RewriteRule $ /rentals/greens\-165? [L,R=301,NC]
+
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82265($|&)
+RewriteRule $ /rentals/colonnade\-club\-168? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82269($|&)
+RewriteRule $ /rentals/bluff\-villas\-1737? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82270($|&)
+RewriteRule $ /rentals/colonnade\-club\-174? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82271($|&)
+RewriteRule $ /rentals/evian\-174? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82274($|&)
+RewriteRule $ /rentals/colonnade\-club\-176? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82276($|&)
+RewriteRule $ /rentals/st\-andrews\-1772? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82279($|&)
+RewriteRule $ /rentals/turnberry\-lane\-18? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82280($|&)
+RewriteRule $ /rentals/colonnade\-club\-181? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82282($|&)
+RewriteRule $ /rentals/st\-andrews\-1880? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82283($|&)
+RewriteRule $ /rentals/evian\-190? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82285($|&)
+RewriteRule $ /rentals/capri\-2? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82286($|&)
+RewriteRule $ /rentals/lark\-2? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82289($|&)
+RewriteRule $ /rentals/beachwalk\-203? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82292($|&)
+RewriteRule $ /rentals/colonnade\-club\-206? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82294($|&)
+RewriteRule $ /rentals/forest\-bch\-villa\-207? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82295($|&)
+RewriteRule $ /rentals/ocean\-one\-207? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82297($|&)
+RewriteRule $ /rentals/beachwalk\-211? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82298($|&)
+RewriteRule $ /rentals/beachwalk\-212? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82299($|&)
+RewriteRule $ /rentals/turnberry\-212? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82301($|&)
+RewriteRule $ /rentals/evian\-217? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82302($|&)
+RewriteRule $ /rentals/turnberry\-218? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82304($|&)
+RewriteRule $ /rentals/sea\-crest\-2213? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82305($|&)
+RewriteRule $ /rentals/turnberry\-230? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82306($|&)
+RewriteRule $ /rentals/turnberry\-231? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82307($|&)
+RewriteRule $ /rentals/villamare\-2314? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82308($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82310($|&)
+RewriteRule $ /rentals/evian\-249? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82311($|&)
+RewriteRule $ /rentals/evian\-255? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82312($|&)
+RewriteRule $ /rentals/evian\-257? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82313($|&)
+RewriteRule $ /rentals/evian\-259? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82320($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82321($|&)
+RewriteRule $ /rentals/beach\-villa\-3? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82322($|&)
+RewriteRule $ /rentals/osprey\-3? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82329($|&)
+RewriteRule $ /rentals/north\-shore\-pl\-305? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82330($|&)
+RewriteRule $ /rentals/forest\-bch\-villa\-307? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82331($|&)
+RewriteRule $ /rentals/windsor\-place\-308? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82334($|&)
+RewriteRule $ /rentals/villamare\-3223? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82342($|&)
+RewriteRule $ /rentals/lands\-end\-35? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82344($|&)
+RewriteRule $ /rentals/fazio\-36? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82346($|&)
+RewriteRule $ /rentals/crabline\-39? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82349($|&)
+RewriteRule $ /rentals/fazio\-4? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82350($|&)
+RewriteRule $ /rentals/ketch\-4? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82351($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82353($|&)
+RewriteRule $ /rentals/upwind\-4? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82357($|&)
+RewriteRule $ /rentals/windsor\-court\-n\-4109? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82360($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82361($|&)
+RewriteRule $ /rentals/captains\-walk\-416? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82363($|&)
+RewriteRule $ /rentals/captains\-walk\-421? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82364($|&)
+RewriteRule $ /rentals/forest\-bch\-villa\-429? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82365($|&)
+RewriteRule $ /rentals/captains\-walk\-435? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82366($|&)
+RewriteRule $ /rentals/ocean\-breeze\-47? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82367($|&)
+RewriteRule $ /rentals/crabline\-49? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82368($|&)
+RewriteRule $ /rentals/dogwood\-5? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82369($|&)
+RewriteRule $ /rentals/ketch\-5? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82369($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82372($|&)
+RewriteRule $ /rentals/lands\-end\-51? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82373($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82374($|&)
+RewriteRule $ /rentals/fazio\-52? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82375($|&)
+RewriteRule $ /rentals/lands\-end\-52? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82376($|&)
+RewriteRule $ /rentals/hampton\-place\-5302? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82378($|&)
+RewriteRule $ /rentals/mooring\-buoy\-54? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82380($|&)
+RewriteRule $ /rentals/ocean\-breeze\-59? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82381($|&)
+RewriteRule $ /rentals/narraganset\-6? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82383($|&)
+RewriteRule $ /rentals/sutherland\-6? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82385($|&)
+RewriteRule $ /rentals/hampton\-place\-6308? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82387($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82393($|&)
+RewriteRule $ /rentals/lark\-7? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82394($|&)
+RewriteRule $ /rentals/ocean\-breeze\-7? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82398($|&)
+RewriteRule $ /rentals/huntington\-7624? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82401($|&)
+RewriteRule $ /rentals/lyons\-8? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82404($|&)
+RewriteRule $ /rentals/tennismaster\-801? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82406($|&)
+RewriteRule $ /rentals/wendover\-dunes\-8103? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82407($|&)
+RewriteRule $ /rentals/wendover\-dunes\-8113? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82408($|&)
+RewriteRule $ /rentals/moorings\-8384? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82409($|&)
+RewriteRule $ /rentals/mooring\-buoy\-84? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82409($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82409($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82410($|&)
+RewriteRule $ /rentals/south\-sea\-pines\-84? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82414($|&)
+RewriteRule $ /rentals/oyster\-catcher\-9? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82415($|&)
+RewriteRule $ /rentals/tennismaster\-904? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82416($|&)
+RewriteRule $ /rentals/courtside\-91? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82417($|&)
+RewriteRule $ /rentals/inverness\-956? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=82420($|&)
+RewriteRule $ /rentals/inverness\-977? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=87154($|&)
+RewriteRule $ /rentals/beachside\-tns\-1869? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95251($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95252($|&)
+RewriteRule $ /rentals/barrington\-court\-311? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95253($|&)
+RewriteRule $ /rentals/breakers\-127? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95254($|&)
+RewriteRule $ /rentals/beachwalk\-135? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95257($|&)
+RewriteRule $ /rentals/deer\-run\-53? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95258($|&)
+RewriteRule $ /rentals/egret\-2? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95259($|&)
+RewriteRule $ /rentals/fazio\-34? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95265($|&)
+RewriteRule $ /rentals/kingston\-dunes\-58? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95266($|&)
+RewriteRule $ /rentals/lyons\-3? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95268($|&)
+RewriteRule $ /rentals/moorings\-9192? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=95275($|&)
+RewriteRule $ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=96263($|&)
+RewriteRule $ /rentals/barrington\-court\-510? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=96414($|&)
+RewriteRule $ /rentals/beachwalk\-200? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=96789($|&)
+RewriteRule $ /rentals/hunt\-club\-5? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=96790($|&)
+RewriteRule $ /rentals/north\-sea\-pines\-119? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=99460($|&)
+RewriteRule $ /rentals/carolina\-beach\-525? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=99512($|&)
+RewriteRule $ /rentals/myrtle\-lane\-17? [L,R=301,NC]
+
+
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=148587($|&)
+RewriteRule $ /rentals/inverness\-939? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)pagedataid\=82269($|&)
+RewriteRule $ /rentals/bluff\-villas\-1737? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)pagedataid\=82243($|&)
+RewriteRule $ /rentals/dune\-lane\-127? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)pagedataid\=82265($|&)
+RewriteRule $ /rentals/colonnade\-club\-168? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=163178($|&)
+RewriteRule $ /rentals/beachwalk\-165? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)pagedataid\=82380($|&)
+RewriteRule $ /rentals/ocean\-breeze\-59? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=164625($|&)
+RewriteRule $ /rentals/green\-heron\-13? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=165119($|&)
+RewriteRule $ /rentals/mariners\-way\-673? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=163261($|&)
+RewriteRule $ /rentals/kingston\-dunes\-91? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)PageDataID\=165255($|&)
+RewriteRule $ /rentals/st\-andrews\-1664? [L,R=301,NC]
+
+
+#CATCHALL FOR TESTIMONIALS
+RewriteRule ^testimonials\.asp /testimonials? [L,R=301,NC]
+
+##EVERYTHING ELSE
+RewriteCond %{QUERY_STRING} (^|&)cat\=10318($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /forest\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10319($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /forest\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10320($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/breakers? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10321($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/carolina\-beach\-club? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10322($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/Coligny\-Villas? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10323($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/courtside? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10324($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /forest\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10325($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/island\-house? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10326($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/north\-shore\-place? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10327($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/ocean\-club? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10328($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/ocean\-one? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10329($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/ocean\-breeze? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10330($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/shorewood? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10331($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/sea\-crest? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10339($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /forest\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10368($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /sea\-pines? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10369($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /sea\-pines? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10370($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /sea\-pines? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10371($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/beachside\-tennis? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10372($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/bluff\-villas? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10373($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10375($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /palmetto\-dunes? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10376($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /palmetto\-dunes? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10377($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /palmetto\-dunes? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10378($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/abbington? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10379($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/barrington? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10380($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/beach\-villas? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10381($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/captains\-walk? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10382($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/fazio? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10383($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/hampton\-place? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10384($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/huntington? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10385($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/iverness? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10386($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/moorings? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10387($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/queens\-grant? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10388($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/st\-andrews? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10389($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/turnberry? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10390($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/villamare? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10391($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/wendover\-dunes? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10392($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/windsor? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10393($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /shipyard? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10394($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /shipyard? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10395($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /shipyard? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10396($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/beachwalk? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10397($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/colonade\-club? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10398($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/cottages? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10399($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/evian? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10400($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/greens? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10401($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/shipmaster? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10402($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/tennismaster? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10403($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/waterford? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10404($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /singleton\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10405($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /singleton\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10406($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /singleton\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10407($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /singleton\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10408($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /port\-royal? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10409($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /port\-royal? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10410($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/devonshire? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10411($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/links? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=10412($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/lyons? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12535($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/lands\-end? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12541($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /complexes? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12542($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /complexes? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12547($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /singleton\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12890($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/hickory\-cove? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12891($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/harbourside\-villas? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12892($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/ocean\-cove? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12893($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/plantation\-club? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12894($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=12895($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/Calibogue\-Cay? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=13897($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=14188($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /singleton\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=14190($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/golfmaster? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=14191($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/island\-club? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=15234($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/sailmaster? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=15820($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /resort/ocean\-dunes? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=6373($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /vacation\-rentals\-homes? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=6374($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /vacation\-rentals\-villas? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=6388($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /hilton\-head/pet\-friendly\-rentals? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7550($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /forest\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7551($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /sea\-pines? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7552($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /palmetto\-dunes? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7553($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /port\-royal? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7554($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /singleton\-beach? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7659($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /shipyard? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7774($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=9714($|&)
+RewriteRule ^vacation\-rentals\-homes\.asp$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteRule ^villa\-complexes\.htm$ /complexes? [L,R=301,NC]
+
+RewriteRule ^area\-map\.asp$ /hilton\-head/area\-info/area\-map? [L,R=301,NC]
+
+RewriteRule ^Beach\-Regulations\.htm$ /hilton\-head/area\-info/beach\-regulations? [L,R=301,NC]
+
+RewriteRule ^Biking\-on\-Hilton\-Head\.htm$ /area\-info/biking\-on\-hilton\-head? [L,R=301,NC]
+
+RewriteRule ^Cruises\-Water\-Activities\-Fishing\.htm$ /thingstodo/Cruises\-Water\-Activities\-Fishing? [L,R=301,NC]
+
+RewriteRule ^faq\.asp$ /faqs? [L,R=301,NC]
+
+RewriteRule ^forestbeach\.htm$ /forest\-beach? [L,R=301,NC]
+
+RewriteRule ^game\-rooms\.htm$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteRule ^golf\-packages\.htm$ /hilton\-head/specials? [L,R=301,NC]
+
+RewriteRule ^group\-accommodations\.htm$ /group\-accommodations? [L,R=301,NC]
+
+RewriteRule ^Hilton\-Head\-Golf\-Courses\.htm$ /thingstodo/hilton\-head\-golf\-courses? [L,R=301,NC]
+
+RewriteRule ^Hilton\-Head\-Historical\-Sites\-Museums\.htm$ /thingstodo/Hilton\-Head\-Historical\-Sites\-Museums? [L,R=301,NC]
+
+RewriteRule ^Hilton\-Head\-Miniature\-Golf\.htm$ /thingstodo/Hilton\-Head\-Miniature\-Golf? [L,R=301,NC]
+
+RewriteRule ^Hilton\-Head\-Nightlife\.htm$ /thingstodo/Hilton\-Head\-Nightlife? [L,R=301,NC]
+
+RewriteRule ^Hilton\-Head\-Pet\-Friendly\-Activities\.htm$ /thingstodo/Hilton\-Head\-Pet\-Friendly\-Activities? [L,R=301,NC]
+
+RewriteRule ^Hilton\-Head\-Spas\.htm$ /thingstodo/Hilton\-Head\-Spas? [L,R=301,NC]
+
+RewriteRule ^hilton\-head\-transportation\.htm$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteRule ^Kids\-Activities\.htm$ /thingstodo/Kids\-Activities? [L,R=301,NC]
+
+RewriteRule ^local\-area\-guide\.asp$ /local\-area\-guide? [L,R=301,NC]
+
+RewriteRule ^meet\-the\-team\.htm$ /meet\-the\-team? [L,R=301,NC]
+
+RewriteRule ^monthlyrentals\.htm$ /monthlyrentals? [L,R=301,NC]
+
+RewriteRule ^new\-properties\.htm$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteRule ^packages\-specials\.asp$ /hilton\-head/specials? [L,R=301,NC]
+
+RewriteRule ^palmettodunes\.htm$ /palmetto\-dunes? [L,R=301,NC]
+
+RewriteRule ^portroyal\.htm$ /port\-royal? [L,R=301,NC]
+
+RewriteRule ^privacy\-policy\.asp$ /privacy\-policy? [L,R=301,NC]
+
+RewriteRule ^property\-management\-services\.asp$ /property\-management\-services? [L,R=301,NC]
+
+RewriteRule ^Restaurants\.htm$ /thingstodo/Restaurants? [L,R=301,NC]
+
+RewriteRule ^seapines\.htm$ /sea\-pines? [L,R=301,NC]
+
+RewriteRule ^shipyard\.htm$ /shipyard? [L,R=301,NC]
+
+RewriteRule ^singletonbeach\.htm$ /singleton\-beach? [L,R=301,NC]
+
+RewriteRule ^terms\-conditions\.asp$ /terms\-conditions? [L,R=301,NC]
+
+RewriteRule ^weather\.asp$ /hilton\-head/area\-info/weather? [L,R=301,NC]
+
+RewriteRule ^local\-area\-guide\.asp$ /local\-area\-guide? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7770($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Hilton\-Head\-Pet\-Friendly\-Activities? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7773($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Hilton\-Head\-Golf\-Courses? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7774($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Cruises\-Water\-Activities\-Fishing? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7775($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Hilton\-Head\-Miniature\-Golf? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7776($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Hilton\-Head\-Historical\-Sites\-Museums? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7777($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Hilton\-Head\-Spas? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7778($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Hilton\-Head\-Pet\-Friendly\-Activities? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7779($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Kids\-Activities? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7781($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Restaurants? [L,R=301,NC]
+
+RewriteCond %{QUERY_STRING} (^|&)cat\=7824($|&)
+RewriteRule ^local\-area\-guide\.asp$ /thingstodo/Hilton\-Head\-Nightlife? [L,R=301,NC]
+
+RewriteRule ^vacation\-rentals\-homes\-search\.asp$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteRule ^vacation\-rentals\-homes\.asp$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteRule ^contact\-information\.asp$ /contact? [L,R=301,NC]
+
+RewriteRule ^sitemap\.asp$ /sitemap.xml? [L,R=301,NC]
+
+RewriteRule ^summer\-specials\.htm$ /hilton\-head/specials? [L,R=301,NC]
+
+RewriteRule ^seapinesspecials\.htm$ /hilton\-head/specials? [L,R=301,NC]
+
+RewriteRule ^freepoolheat\.htm$ /rentals/results.cfm? [L,R=301,NC]
+
+RewriteRule ^blackfriday\.htm$ /hilton\-head/specials? [L,R=301,NC]
+
+RewriteRule ^specials\.htm$ /hilton\-head/specials? [L,R=301,NC]
+
+
+RewriteRule ^privacy\-policy\.cfm$ /privacy\-policy? [L,R=301]
+
+
+
+# SEO TEAM - PUT DATE REDIRECTS WERE ADDED HERE AND YOUR INITIALS
+#jjb 3.9.2020
+RewriteRule ^wp-login\.php$ /blog/wp-login.php [R=301,L]
+
+#jjb 3.24.2020
+RewriteRule ^booking/ocean\-dunes\-408$ /rentals/ocean-dunes-408? [L,R=301]
+RewriteRule ^booking/wendover\-dunes\-8103$ /rentals/wendover-dunes-8103? [L,R=301]
+RewriteRule ^booking/st\-andrews\-1880$ /rentals/st-andrews-1880? [L,R=301]
+RewriteRule ^booking/tennismaster\-802$ /rentals/tennismaster-802? [L,R=301]
+RewriteRule ^booking/barrington\-court\-311$ /rentals/barrington-court-311? [L,R=301]
+RewriteRule ^booking/beachwalk\-203$ /rentals/beachwalk-203? [L,R=301]
+RewriteRule ^booking/plantation\-club\-533$ /rentals/plantation-club-533? [L,R=301]
+RewriteRule ^booking/ocean\-breeze\-47$ /rentals/ocean-breeze-47? [L,R=301]
+RewriteRule ^terms\-conditions$ /property-management-services/terms-conditions? [L,R=301]
+RewriteRule ^booking/bluff\-villas\-1737$ /rentals/bluff-villas-1737? [L,R=301]
+RewriteRule ^rentals/queens\-grant\-733$ /rentals/results.cfm? [L,R=301]
+RewriteRule ^rentals/ocean\-one\-207$ /rentals/results.cfm? [L,R=301]
+#RewriteRule ^rentals/mariners\-way\-673$ /rentals/results.cfm? [L,R=301]
+RewriteRule ^booking/lands\-end\-52$ /rentals/lands-end-52? [L,R=301]
+RewriteRule ^about\-us/privacy\-policy$ /privacy-policy? [L,R=301]
+RewriteRule ^seapines$ /sea-pines? [L,R=301]
+RewriteRule ^palmettodunes$ /palmetto-dunes? [L,R=301]
+RewriteRule ^portroyal$ /port-royal? [L,R=301]
+RewriteRule ^singletonbeach$ /singleton-beach? [L,R=301]
+RewriteRule ^events\-list$ /hilton-head/events-list? [L,R=301]
+RewriteRule ^forestbeach$ /forest-beach? [L,R=301]
+
+
+
+
+##MASS REDIRECT ALL PDP PAGES when doing PMS or website conversions
+##IMPORTANT -- This code below will change based on the old URL structure. The point of it is to grab the old property ID from the URL old and pass it to pdp-redirect.cfm. The .cfm file will then process and handle the redirect. 
+
+## This code has the structure of /propertyDetail.php?propid=xx  so the code uses a query string grab
+# RewriteCond %{REQUEST_URI}  ^(.*)/propertyDetail\.php$ 
+# RewriteCond %{QUERY_STRING} ^propid=([0-9]*)
+# RewriteRule ^(.*)$ /pdp-redirect.cfm?propid=%1 [L,NC]
+
+## This code has the structure of /Unit/Details/xxxx so the code just looks for it in the URL
+# RewriteRule ^Unit/Details/([0-9]*)$ pdp-redirect.cfm?propid=$1 [NC,L]
+
+
+
+#Rewrite rule for the SEO friendly results page
+RewriteRule ^rentals/results$ rentals/results.cfm [QSA,L]
+
+
+# /////////////////////////////
+# PROGRAMMING TEAM: This rule is for SEO friendly detail pages with dates; the format is /booking/property-name/unitcode?strcheckin=date&strcheckout=date
+# UNCOMMENT THE ONE YOU NEED!
+# /////////////////////////////
+
+
+
+#Rewrite rule for SEO friendly detail pages
+RewriteRule ^rentals/([a-zA-Z0-9-]+)$ rentals/property.cfm?slug=$1 [L]
+
+
+
+
+
+# /////////////////////////////
+# PROGRAMMING TEAM: This rule is for SEO friendly detail pages with dates; the format is /booking/property-name/unitcode?strcheckin=date&strcheckout=date
+# UNCOMMENT THE ONE YOU NEED!
+# /////////////////////////////
+
+#Rewrite rule for Things to Do category pages
+RewriteRule ^thingstodo/([a-zA-Z0-9-]+)$ layouts/thingstodo-categories.cfm?$1 [L]
+
+#Rewrite rule for resorts detail pages
+RewriteRule ^resort/([a-zA-Z0-9-]+)$ layouts/resort.cfm?$1 [L]
+
+#Rewrite rule for long term rentals detail pages
+RewriteRule ^long-term-rental/([a-zA-Z0-9-]+)$ layouts/long-term-rental.cfm?$1 [L]
+
+#Rewrite rule for specials detail pages
+RewriteRule ^special/([a-zA-Z0-9-]+)$ layouts/special.cfm?$1 [L]
+
+#Rewrite rule for staff detail pages
+RewriteRule ^staff/([a-zA-Z0-9-]+)$ layouts/staff.cfm?$1 [L]
+
+#Rewrite rule for event detail pages
+RewriteRule ^event/([a-zA-Z0-9-]+)/([0-9]+)$ layouts/event.cfm?$2 [L]
+
+
+
+# /////////////////////////////
+# PROGRAMMING TEAM: Does the rewrite magic on most pages, but ignores the pages specified
+# /////////////////////////////
+
+RewriteCond %{REQUEST_URI} !^.*/(guest-focus|blog|mls|map|admin|leadtracker|images|assets|cache|components|css|includes|jquery|js|robots.txt|sitemap.xml|urllist.txt|stylesheets|javascripts|submit.cfm|userfiles|cfformprotect|includes|submit.cfm)($|/.*$) [NC]
+
+RewriteRule ^([a-zA-Z0-9-/]+)$ index.cfm?$1 [L]
+
+
+# /////////////////////////////
+# PROGRAMMING TEAM: SQL Injection Protection
+# http://www.aliaspooryorik.com/blog/index.cfm/e/posts.details/post/blocking-sql-injection-with-htaccess-383
+# /////////////////////////////
+
+RewriteRule ^.*EXEC\(@.*$        - [F]
+RewriteRule ^.*CAST\(.*$         - [F]
+RewriteRule ^.*DECLARE.*$        - [F]
+RewriteRule ^.*DECLARE%20.*$     - [F]
+RewriteRule ^.*NVARCHAR.*$       - [F]
+RewriteRule ^.*sp_password.*$    - [F]
+RewriteRule ^.*%20xp_.*$         - [F]
+
+
+# /////////////////////////////
+# PROGRAMMING TEAM: File Not Founds Catchall
+# /////////////////////////////
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ page-not-found.cfm?$1 [QSA,L]
+
+
+
+# /////////////////////////////
+# CACHING PARAMETERS FOR FILE TYPES
+# /////////////////////////////
+# SET CACHE FOR 1 YEAR FOR IMAGES
+<filesMatch ".(jpg|jpeg|png|gif|ico)$">
+Header set Cache-Control "max-age=31536000, public"
+</filesMatch>
+# SET CACHE FOR 1 MONTH FOR js AND css
+<filesMatch ".(css|js)$">
+Header set Cache-Control "max-age=2628000, public"
+</filesMatch>

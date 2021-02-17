@@ -1,0 +1,5 @@
+If you copy this from another site, you have to change the following:
+
+1. Jquery-File-Upload/js/main.js: change the path on line 21
+
+2. Be sure you create these folders: /images/propgallery/original

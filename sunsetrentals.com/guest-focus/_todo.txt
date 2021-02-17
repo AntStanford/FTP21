@@ -1,0 +1,29 @@
+Guest loyalty meeting:
+
+1. checkout page right above 'submit request'
+
+checkbox - 
+
+A/B testing of incentives
+
+2. repeat
+
+email address - member
+
+
+
+prompt them to log in via website
+
+if they log in, on booking, pre-populate their info
+
+'Hey vanessa'
+
+on confirmation, check if email match..if not, let them know,  PM 
+
+
+
+free wifi = promo code?? 
+
+
+# of new members, activity report, new sign pus, num logins, # saved favs, refer 10 friends get extra 100 pts
+

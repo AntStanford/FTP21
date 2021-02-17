@@ -1,0 +1,1 @@
+{"code":200,"type":"http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html","title":"Unprocessable Entity","status":422,"detail":"Unable to book a stay arriving within 0 days of today. Please call for availability."}

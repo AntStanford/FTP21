@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /rentals/book-now.cfm*?*
+Disallow: /event-calendar/index.cfm*?*
+Disallow: /event-calendar/allday.cfm*?*
+Disallow: /rentals/print.cfm*?*
+Disallow: /blog/wp-admin/
+ 
+
+Sitemap:https://www.sunsetrentals.com/sitemap.xml

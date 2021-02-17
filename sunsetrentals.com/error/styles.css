@@ -1,0 +1,18 @@
+a,	p {font: inherit; font-family: inherit; font-size: inherit; color: inherit;}
+h3, h4 {color: #666666 !important;}
+.col-md-12 {padding-left: 5px !important; padding-right: 5px !important;}
+#errorform {width: 640px; margin: 0 auto; padding: 15px 10px; background: rgba(255,255,255,0.75); border: 1px solid #ccc;}
+#errorform:after {content: ""; display: block; clear: both;}
+#errorform h4 {margin: 0 0 15px 5px;}
+#errorform > div {margin-bottom: 10px;}
+#errorform label {display: block; width: auto; margin-right: 2%; vertical-align: top;}
+#errorform input,
+#errorform textarea {padding: 10px 15px; border: 1px solid #f7f7f7; border-radius: 2px; box-shadow: 0 0 4px -1px rgba(0,0,0,0.65)}
+#errorform input[name="firstname"] {margin-right: 2%;}
+#errorform input[name="firstname"],
+#errorform input[name="lastname"] {width: 274px;}
+#errorform input[name="email"],
+#errorform input[name="phone"] {width: 596px;}
+#errorform textarea {width: 596px; height: 100px;}
+#errorform input[type="submit"] {float: right; background-color: #7FB9B0; border: none; color: #fff;}
+#errorform input[type="submit"]:hover {background-color: #007261;}

@@ -1,0 +1,6 @@
+/* Leave the unicorn-app.css alone and just add your own custom CSS here  */
+.datepicker { background: #fff !important; cursor: pointer !important; }
+#sort-list{margin:0;padding:0}
+#sort-list li{list-style:none;border-bottom:1px #ccc solid;border-top:1px #ccc solid}
+#uniform-undefined.uploader { width: 290px; }
+#uniform-undefined.uploader input[type=file], #uniform-undefined.uploader span.filename { width: 182px; }

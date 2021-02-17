@@ -1,0 +1,8 @@
+This event module works hand in hand with a calendar on the front end
+
+Here is an example:
+
+http://www.exploreedisto.com/event-calendar/index.cfm
+
+Go to that website and download the event-calendar folder in the root of the site for the front end.
+

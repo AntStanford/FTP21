@@ -1,0 +1,1 @@
+{"type":"http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html","title":"Unprocessable Entity","status":422,"detail":"The transaction has been declined because of an AVS mismatch. The address provided does not match billing address of cardholder"}
