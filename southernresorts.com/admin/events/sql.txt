@@ -1,0 +1,13 @@
+CREATE TABLE `eventcal` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cat` int(3) DEFAULT NULL,
+  `cal_date` datetime DEFAULT NULL,
+  `event_title` varchar(100) DEFAULT NULL,
+  `event_location` varchar(180) DEFAULT NULL,
+  `details_long` text,
+  `time_start` varchar(25) DEFAULT NULL,
+  `time_end` varchar(25) DEFAULT NULL,
+  `photo` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=115 DEFAULT CHARSET=latin1;

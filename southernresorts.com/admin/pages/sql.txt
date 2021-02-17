@@ -1,0 +1,23 @@
+CREATE TABLE `pages` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `name` varchar(255) default NULL,
+  `slug` varchar(255) default NULL,
+  `body` text,
+  `h1` varchar(255) default NULL,
+  `metatitle` varchar(255) default NULL,
+  `metakeywords` text,
+  `metadescription` text,
+  `partial` varchar(255) default NULL,
+  `layout` varchar(255) default NULL,
+  `headerimage` varchar(255) default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+
+/* Populate Pages table with some basic pages to get you going */
+
+INSERT INTO `pages` (`name`, `slug`,`layout`) VALUES
+('Home', 'index','home.cfm'),
+('Contact', 'contact','');
+
+

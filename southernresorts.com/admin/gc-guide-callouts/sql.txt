@@ -1,0 +1,8 @@
+CREATE TABLE `cms_callouts` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(100) DEFAULT NULL,
+  `description` text,
+  `photo` varchar(255) DEFAULT NULL,
+  `sort` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;

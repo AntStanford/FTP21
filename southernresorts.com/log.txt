@@ -1,0 +1,52 @@
+07/01/19 1:11 PM Level: Info - currently pointing->.
+07/01/19 1:11 PM Level: Info - currently pointing->.
+07/01/19 1:11 PM Level: Info - currently pointing->.
+07/31/19 2:21 PM Level: Info - jtest->.
+08/01/19 11:01 AM Level: Info - resorts-carousel->.
+01/09/20 8:17 AM Level: Info - for availability->.
+01/15/20 4:26 PM Level: Info - minimum night->.
+01/15/20 4:26 PM Level: Info - min night ->.
+01/21/20 11:13 AM Level: Info - getAmenities->.
+01/21/20 11:18 AM Level: Info - getTowns->.
+01/21/20 11:19 AM Level: Info - getTowns->.
+02/04/20 9:15 AM Level: Info - gcg-destination->.
+02/06/20 6:04 AM Level: Info - cms_remindtobook->.
+02/06/20 6:05 AM Level: Info - ReturnAndBookReminder->.
+02/06/20 6:07 AM Level: Info - _remind-book-later.cfm->.
+02/06/20 6:29 AM Level: Info - reminderset->.
+02/06/20 6:52 AM Level: Info - ReturnAndBookReminder->.
+02/06/20 6:53 AM Level: Info - _remind-book-later.cfm->.
+02/06/20 7:10 AM Level: Info - cms_remindtobook->.
+02/07/20 9:24 AM Level: Info - propertyTabs->.
+02/07/20 10:13 AM Level: Info - <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>->.
+02/07/20 10:14 AM Level: Info - meta name="robots"->.
+02/11/20 10:42 AM Level: Info - blueconic->.
+02/13/20 2:41 PM Level: Info - Opt-in->.
+02/13/20 3:05 PM Level: Info - tag-experience.jpg->.
+02/17/20 1:18 PM Level: Info - resort-bottom->.
+02/17/20 3:33 PM Level: Info - property-dates resort-dates->.
+02/24/20 1:51 PM Level: Info - resort-dates-wrap->.
+02/24/20 1:52 PM Level: Info - id="arrivalDayDetail"->.
+03/06/20 10:14 AM Level: Info - results-list-properties resorts-list-properties->.
+03/06/20 10:16 AM Level: Info - resorts-list-properties->.
+03/06/20 10:37 AM Level: Info - results.cfm?scroll->.
+03/06/20 10:38 AM Level: Info - results-search-query-resorts.cfm->.
+03/09/20 9:57 AM Level: Info - if you have questions->.
+03/17/20 2:47 PM Level: Info - eventEndDate->.
+04/06/20 1:28 PM Level: Info - cloudfront.net->.
+04/20/20 4:10 PM Level: Info - cloudfront.net->.
+04/21/20 9:30 AM Level: Info - defaultPhoto->.
+04/21/20 4:00 PM Level: Info - pdp-gulf-coast-activites->.
+05/11/20 9:02 AM Level: Info - create()->.
+05/18/20 4:06 PM Level: Info - blog-wrapper->.
+05/18/20 4:06 PM Level: Info - blog-wrapper->.
+06/16/20 4:45 AM Level: Info - property-details-wrap->.
+06/16/20 4:51 AM Level: Info - Bedrooms->.
+06/16/20 4:52 AM Level: Info - Bedrooms:->.
+06/16/20 4:58 AM Level: Info - qryGetSearchresults2->.
+06/16/20 4:59 AM Level: Info - property-info-item info-icon->.
+11/24/20 11:59 AM Level: Info - 124px !important->.
+11/24/20 2:22 PM Level: Info - 124px->.
+01/04/21 10:35 AM Level: Info - session.__trackcampaign->.
+01/05/21 7:19 AM Level: Info - campaignToken->.
+01/05/21 7:26 AM Level: Info - trackcampaign->.

@@ -1,0 +1,98 @@
+.event-calendar {margin-bottom: 20px;}
+.event-calendar .big-cal td {height: 100px;}
+.event-calendar .big-cal td label {display: block; margin-top: 2px; white-space: normal;}
+.label-primary {background: #003468;}
+
+.text { font-size: 10pt; color: #737573; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; text-align: left; }
+.text a { color: #3169B5; text-decoration: none; }
+.text a:hover { color: #3169B5; text-decoration: underline; }
+.textsm { font-size: 8pt; color: Black; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; text-align: left; }
+.textsmsm { font-size: 7pt; color: Black; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; }
+.textsmsm a { display: block; color: #838383; }
+.textsmsm a:hover { background: #ACC9EC; color: Black; }
+.textbold { font-size: 10pt; color: #000; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-weight: bold; }
+.textheading { font-size: 12pt; color: #525552; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; }
+.textheadingbold { font-size: 12pt; color: #525552; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-weight: bold; }
+
+a.textlink { font-size: 10pt; color: #0000CD; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; }
+a.textlink2 { font-size: 10pt; color: #C33; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; }
+a.callink { font-size: 8pt; color: #0000CD; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; }
+a.callinkbold { font-size: 8pt; color: #000; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-weight: bold; }
+a.callinkday { font-size: 8pt; color: #000; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; }
+.caltxt { font-size: 8pt; color: #000; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; }
+.caltxtbold { font-size: 8pt; color: #000; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-weight: bold; }
+
+a.smcal { font-size: 7pt; color: #003468; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; text-decoration: none; }
+a.smcalbold { font-size: 7pt; color: #000; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-weight: bold; }
+a.smcalday { font-size: 7pt; color: #003468; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; text-decoration: none; }
+
+.time { font-size: 10pt; color: #708090; font-family: Verdana, Geneva, Arial, Helvetica, sans-serif; font-weight: bold; }
+
+.border1 { border-bottom: 1px solid #000; padding: 6px 4px 6px 4px; }
+.border1a { border-bottom: 1px solid #000; }
+.border2 { border-bottom: 1px solid #000; border-left: 1px solid Black; border-right: 1px solid Black; padding: 6px 4px 6px 4px; }
+.border2a { border-bottom: 1px solid #dfdfdf; border-left: 1px solid #dfdfdf; border-right: 1px solid #dfdfdf; background-color: #F7F3F7; }
+.border3 { border-top: 1px solid Black; border-bottom: 1px solid Black; border-left: 1px solid Black; border-right: 1px solid Black; padding: 6px 4px 6px 4px; }
+.border4 {  padding: 6px 4px 6px 4px; }
+.border4a { float: right; padding: 6px 4px 6px 4px; }
+.border4b { width: 70px; float: right; padding: 6px 4px 6px 4px; }
+.border5 { border-top: 1px solid Black; border-bottom: 1px solid Black; padding: 6px 4px 6px 4px; }
+
+.appointmentDetails { display: none; }
+.appointmentDetailsShow { display: block; }
+
+.well img { max-width: 100%; }
+
+.detailbox { padding: 4px 4px 4px 13px; color: #3E3E3E; }
+.tims { color: #00478A; }
+.clear { clear: both; height: 6px; }
+
+.apptxt { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #666; }
+.apptxt a { color: #666; text-decoration: none; }
+.apptxt a:hover { color: #000; text-decoration: underline; }
+.apptime { font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 8pt; color: #000; padding: 4px 4px 4px 0px; }
+.appcont { background-color: #FFF; border-bottom: 1px solid #C4C7BA; }
+.appcontno { background-color: #DEE3E7; }
+.appcontyup { background-color: #DEE3E7; border-bottom: 1px solid #C4C7BA; }
+.line {  border-bottom: 1px solid #E0E3D8; vertical-align: baseline; }
+.hars { background-color: #b8c6c7; border-bottom: 1px solid #E0E3D8; }
+.warning { background-color: Yellow; color: #8B0000; font-family: verdana, arial, helvetica, sans-serif; font-size: 10pt; padding-left: 8px; margin-left: 6px; margin-right: 6px; padding-top: 6px; padding-bottom: 6px; }
+.ztest { margin-right: 200px; width: 100%; background-color: #C0C3E8; }
+.ztest2 { width: 200px; background-color: #A9E3A8; }
+.navwhite { padding-left: 60px; font-size: 10px; color: #fff; font-weight: bold; font-family: verdana, arial, helvetica, sans-serif; }
+select.navgray { font-size: 9px; color: #525552; font-family: verdana, arial, helvetica, sans-serif; }
+.hdnvc { border: solid 1px #B4CCEB; color: #366ab3; }
+.hdnvch { border: solid 1px #B4CCEB; color: #366ab3; background-color: #E5EEF9; }
+.hdnvcgray { border: 1px solid #708090; color: #DADADA; }
+.hdnvc a { text-decoration: none; }
+.hdnvc a:hover { text-decoration: none; }
+.hdnvch a { text-decoration: none; }
+.hdnvch a:hover { text-decoration: none; }
+.kontent { padding: 6px 6px 6px 6px; }
+.titlewbg { background-image: url(images/gradient_01.gif); }
+.login { float: right; margin: 0; }
+
+.main .content { padding: 25px; }
+.main .content .table label { color: #fff; display: block; white-space: normal; text-align: left; font-size: 100%; margin: 0 0 5px; line-height: normal; padding: 5px 7px; }
+.main .content .table label a { color: #fff; }
+
+.hdnvcgray { background: #f8f8f8; }
+
+.event-wrap { font-size: 70%; margin: 5px 0; }
+
+.label-default { background-color: #EBEBEB; color: #727070 !important; }
+
+.table.mcal { font-size: 50%; table-layout: fixed; }
+.table.mcal th, .table.mcal td a { padding: 4px; }
+.table.mcal td { width: 14.28%; height: 20px; vertical-align: middle; }
+.table.mcal td.emptyday { background: #f8f8f8; }
+
+.ecal { padding: 15px; margin: 15px 0; background: #fff; border-radius: 10px; color: #333; }
+.table-bordered th, .table-bordered td { border: 1px #E2E2E2 solid; }
+.ecal .alert-info { overflow: hidden; }
+.ecal .alert-info form { margin: 0 5px 0 0; }
+.table .label-info { white-space: normal; word-break: break-all; }
+.table .label-info a { color: #fff; letter-spacing: 1px; word-break: break-word;}
+
+.big-cal { table-layout: fixed; }
+.big-cal td { height: 60px; }

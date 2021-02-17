@@ -1,0 +1,7 @@
+CREATE TABLE `testimonials` (
+  `id` int(11) unsigned NOT NULL auto_increment,
+  `user` varchar(255) default NULL,
+  `body` text,
+  `createdat` timestamp NULL default NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

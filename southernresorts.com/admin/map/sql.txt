@@ -1,0 +1,7 @@
+CREATE TABLE `thingstodo` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `photo` varchar(255) DEFAULT NULL,
+  `description` text,
+  `title` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
